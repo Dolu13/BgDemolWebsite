@@ -3,7 +3,11 @@
 import { useState, useRef, useEffect } from 'react'
 import { Transition } from '@headlessui/react'
 import Image from 'next/image'
-import FeaturesBg from '@/public/images/features-bg.png'
+import TolesTuiles from '@/public/images/TOLE-TUILE.jpg'
+import TolesBardage from '@/public/images/bardage.png'
+import Accesoires from '@/public/images/accesoire.jpg'
+
+
 import FeaturesElement from '@/public/images/features-element.png'
 
 export default function Features() {
@@ -32,8 +36,8 @@ export default function Features() {
 
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-16">
-            <h1 className="h2 mb-4">Explore the solutions</h1>
-            <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat.</p>
+            <h1 className="h2 mb-4">Découvrez nos produits</h1>
+            <p className="text-xl text-gray-600">Nous vous garantissons des produits de qualité pour vous accompagner dans votre projet.</p>
           </div>
 
           {/* Section content */}
@@ -42,8 +46,8 @@ export default function Features() {
             {/* Content */}
             <div className="max-w-xl md:max-w-none md:w-full mx-auto md:col-span-7 lg:col-span-6 md:mt-6" data-aos="fade-right">
               <div className="md:pr-4 lg:pr-12 xl:pr-16 mb-8">
-                <h3 className="h3 mb-3">Powerful suite of tools</h3>
-                <p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
+                <h3 className="h3 mb-3">Découvrez nos produits</h3>
+                {/*<p className="text-xl text-gray-600">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>*/}
               </div>
               {/* Tabs buttons */}
               <div className="mb-8 md:mb-0">
@@ -114,8 +118,28 @@ export default function Features() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <Image className="md:max-w-none mx-auto rounded" src={TolesTuiles} width={500} height="462" alt="Features bg" />
+                      <button
+                          className="absolute border hover:border-sky-600 duration-500 group cursor-pointer text-gray-700 overflow-hidden h-8 md:h-8 w-72 md:w-72 rounded-md bg-gradient-to-r from-gray-300 to-gray-100 p-2 flex justify-center items-center font-extrabold top-1/4 left-1/5"
+                          style={{ left: '5%',top: '70%' }}
+                      >
+                        <div
+                            className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-600 to-gray-400 delay-150 group-hover:delay-75"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-500 to-gray-300 delay-150 group-hover:delay-100"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-400 to-gray-200 delay-150 group-hover:delay-150"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-300 to-gray-100 delay-150 group-hover:delay-200"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-200 to-gray-50 delay-150 group-hover:delay-300"
+                        ></div>
+                        <p className="z-10">En savoir plus</p>
+                      </button>
                     </div>
                   </Transition>
                   {/* Item 2 */}
@@ -133,8 +157,28 @@ export default function Features() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <Image className="md:max-w-none mx-auto rounded" src={TolesBardage} width={500} height="462" alt="Features bg" />
+                      <button
+                          className="absolute border hover:border-sky-600 duration-500 group cursor-pointer text-gray-700 overflow-hidden h-8 md:h-8 w-72 md:w-72 rounded-md bg-gradient-to-r from-gray-300 to-gray-100 p-2 flex justify-center items-center font-extrabold top-1/4 left-1/5"
+                          style={{ left: '5%',top: '70%' }}
+                      >
+                        <div
+                            className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-600 to-gray-400 delay-150 group-hover:delay-75"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-500 to-gray-300 delay-150 group-hover:delay-100"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-400 to-gray-200 delay-150 group-hover:delay-150"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-300 to-gray-100 delay-150 group-hover:delay-200"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-200 to-gray-50 delay-150 group-hover:delay-300"
+                        ></div>
+                        <p className="z-10">En savoir plus</p>
+                      </button>
                     </div>
                   </Transition>
                   {/* Item 3 */}
@@ -152,8 +196,28 @@ export default function Features() {
                     unmount={false}                     
                   >
                     <div className="relative inline-flex flex-col">
-                      <Image className="md:max-w-none mx-auto rounded" src={FeaturesBg} width={500} height="462" alt="Features bg" />
-                      <Image className="md:max-w-none absolute w-full left-0 transform animate-float" src={FeaturesElement} width={500} height="44" alt="Element" style={{ top: '30%' }} />
+                      <Image className="md:max-w-none mx-auto rounded" src={Accesoires} width={500} height="462" alt="Features bg" />
+                      <button
+                          className="absolute border hover:border-sky-600 duration-500 group cursor-pointer text-gray-700 overflow-hidden h-8 md:h-8 w-72 md:w-72 rounded-md bg-gradient-to-r from-gray-300 to-gray-100 p-2 flex justify-center items-center font-extrabold top-1/4 left-1/5"
+                          style={{ left: '5%',top: '70%' }}
+                      >
+                        <div
+                            className="absolute z-10 w-48 h-48 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-600 to-gray-400 delay-150 group-hover:delay-75"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-40 h-40 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-500 to-gray-300 delay-150 group-hover:delay-100"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-32 h-32 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-400 to-gray-200 delay-150 group-hover:delay-150"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-24 h-24 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-300 to-gray-100 delay-150 group-hover:delay-200"
+                        ></div>
+                        <div
+                            className="absolute z-10 w-16 h-16 rounded-full group-hover:scale-150 transition-all duration-500 ease-in-out bg-gradient-to-r from-gray-200 to-gray-50 delay-150 group-hover:delay-300"
+                        ></div>
+                        <p className="z-10">En savoir plus</p>
+                      </button>
                     </div>
                   </Transition>
                 </div>

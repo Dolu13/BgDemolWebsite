@@ -7,7 +7,7 @@ import Hero from '@/components/hero'
 import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
 import Testimonials from '@/components/testimonials'
-import Newsletter from '@/components/newsletter'
+import ContactForm from '@/components/contactForm'
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <Features />
       <FeaturesBlocks />
       <Testimonials />
-      <Newsletter />
+      <ContactForm />
     </>
   )
 }
