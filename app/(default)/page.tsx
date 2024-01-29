@@ -1,3 +1,5 @@
+
+
 export const metadata = {
   title: 'Home - Simple',
   description: 'Page description',
@@ -6,17 +8,15 @@ export const metadata = {
 import Hero from '@/components/hero'
 import Features from '@/components/features'
 import FeaturesBlocks from '@/components/features-blocks'
-import Testimonials from '@/components/testimonials'
 import ContactForm from '@/components/contactForm'
-
 export default function Home() {
   return (
-    <>
+    <main>
       <Hero />
       <Features />
-      <FeaturesBlocks />
-      <Testimonials />
+        <FeaturesBlocks />
+        {/*<Testimonials />*/}
       <ContactForm />
-    </>
+    </main>
   )
 }
