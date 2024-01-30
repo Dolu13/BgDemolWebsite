@@ -26,7 +26,7 @@ export default function ModalVideo({
 }: ModalVideoProps) {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const videoRef = useRef<HTMLVideoElement>(null)
-
+// modif
   return (
     <div>
 
