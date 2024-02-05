@@ -23,6 +23,7 @@ export default function NewCategory() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
+
                 body: JSON.stringify(newCategory),
             });
 

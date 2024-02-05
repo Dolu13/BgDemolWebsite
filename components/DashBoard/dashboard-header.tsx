@@ -1,4 +1,9 @@
-export default function DashboardHeader() {
+'use client'
+import { useState } from 'react';
+
+const DashboardHeader = () => {
+    const [isConfigOpen, setIsConfigOpen] = useState(false);
+
     return (
         <header className="bg-gray-800 text-white p-4">
             <div className="container mx-auto flex items-center justify-between">
@@ -10,7 +15,26 @@ export default function DashboardHeader() {
                     <a href="/dashboard/products" className="hover:text-gray-300">Produits</a>
                     <a href="/dashboard/categories" className="hover:text-gray-300">Catégories</a>
                     <a href="/dashboard/lengths" className="hover:text-gray-300">Longueurs de Stock</a>
-                    {/* Ajoutez d'autres liens pour d'autres parties du tableau de bord */}
+
+                    {/* Ajoutez un élément de liste déroulante pour "Config" */}
+                    <div className="relative group">
+                        <a
+                            href="#"
+                            className="hover:text-gray-300 cursor-pointer"
+                            onClick={() => setIsConfigOpen(!isConfigOpen)}
+                        >
+                            Config
+                        </a>
+
+                        {/* Liste déroulante pour "Config" */}
+                        {isConfigOpen && (
+                            <ul className="absolute top-8 right-0 bg-gray-800 text-white p-2 space-y-2 rounded-md">
+                                <li><a href="/dashboard/categories">Catégories</a></li>
+                                <li><a href="/dashboard/lengths">Longueurs de Stock</a></li>
+                                {/* Ajoutez d'autres liens pour d'autres parties de la configuration */}
+                            </ul>
+                        )}
+                    </div>
                 </nav>
 
                 {/* Menu de navigation pour les écrans plus petits */}
@@ -20,4 +44,6 @@ export default function DashboardHeader() {
             </div>
         </header>
     );
-}
+};
+
+export default DashboardHeader;

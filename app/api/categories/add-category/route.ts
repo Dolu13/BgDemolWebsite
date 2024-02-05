@@ -6,7 +6,8 @@ import {CategoryDetails} from "@/app/type";
 
 export async function POST(req: Request) {
     if (req.method === 'POST') {
-        const { cat_name, cat_desc, img_path } = req.body  as any;
+        const body = await req.json()
+        const { cat_name, cat_desc, img_path } = body  as any;
         console.log(cat_name, cat_desc, img_path)
         if (cat_name && cat_desc && img_path) {
             const client = new Client({
