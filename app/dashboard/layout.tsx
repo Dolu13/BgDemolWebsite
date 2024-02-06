@@ -5,7 +5,7 @@ export default function DashboardLayout({
                                         }: {
     children: React.ReactNode
 }) {
-    return <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip">
+    return <div className="flex flex-col min-h-screen overflow-hidden supports-[overflow:clip]:overflow-clip z-100">
         <DashboardHeader />
         {children}
     </div>

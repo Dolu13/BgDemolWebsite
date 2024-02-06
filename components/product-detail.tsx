@@ -1,12 +1,12 @@
 import Image from "next/image";
 
 export interface ProductDetail{
-    id: number;
-    name: string;
-    details: string;
-    color: string[];
-    price: number;
-    category: string;
+    id?: number;
+    name?: string;
+    details?: string;
+    color?: string[];
+    price?: number;
+    category?: string;
     img: string;
 
 }
@@ -41,9 +41,9 @@ export default function ProductDetail({name, details, color, price, category, im
                                 <div className="flex">
                                     <span className="mr-3">Couleur</span>
 
-                                    {color.map(color => (
+                                    {color && color.map(color => (
                                         <>
-                                        <button className={`border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none ${getColorClass(color)}`}></button>
+                                        <button className={`border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none`}></button>
                                         <span className="border-2">{color}</span>
                                         </>
                                     )

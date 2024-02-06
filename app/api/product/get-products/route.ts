@@ -26,6 +26,7 @@ export async function GET(req: Request){
                 p.product_name,
                 p.product_desc,
                 c.cat_name AS category,
+                c.cat_desc AS category_id,
                 p.product_price,
                 p.img_path,
                 ARRAY_AGG(DISTINCT col.color) AS colors,
@@ -36,16 +37,13 @@ export async function GET(req: Request){
                 LEFT JOIN product_colors pc ON p.product_id = pc.product_id
                 LEFT JOIN product_lengths pl ON p.product_id = pl.product_id
                 LEFT JOIN colors col ON pc.color_id = col.color_id
-                LEFT JOIN stock_lengths len ON pl.length_id = len.length_id
+                LEFT JOIN lengths len ON pl.length_id = len.length_id
             GROUP BY
                 p.product_id, c.cat_id
             `
         );
-        if (result.rows.length === 0) {
-            return NextResponse.json({ error: 'Produits non trouvé' });
-        } else {
-            return NextResponse.json(result.rows[0]);
-        }
+            return NextResponse.json(result.rows);
+
     } catch (error) {
         console.error('Erreur lors de l\'exécution de la requête', error);
         return NextResponse.json({ error: 'Erreur interne du serveur' });

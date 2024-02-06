@@ -1,10 +1,8 @@
-import CategoryList from "@/components/DashBoard/Categories/category-list";
-import NewCategory from "@/components/DashBoard/Categories/new-category";
+import CategoryDash from "@/components/DashBoard/categories/category-dash";
 
 export default function Page() {
     return <>
-        <CategoryList />
-        <NewCategory />
+        <CategoryDash />
     </>;
 
 }

@@ -1,7 +1,5 @@
 import { Client } from 'pg';
 import { NextResponse } from 'next/server';
-import {CategoryDetails} from "@/app/type";
-
 
 export async function GET(req: Request) {
     const client = new Client({
@@ -15,20 +13,17 @@ export async function GET(req: Request) {
     try {
         await client.connect();
 
-        // Requête SQL pour récupérer les détails des catégories
-        const result = await client.query<CategoryDetails>(
+        const result = await client.query(
             `
-            SELECT
-                cat_id AS id,
-                cat_name AS cat_name,
-                cat_desc AS cat_desc,
-                img_path AS img_path
-            FROM
-                categories
+                SELECT
+                    length_id AS id,
+                    length
+                FROM
+                    lengths
             `
         );
 
-            return NextResponse.json(result.rows);
+        return NextResponse.json(result.rows);
     } catch (error) {
         console.error('Erreur lors de l\'exécution de la requête', error);
         return NextResponse.json({ error: 'Erreur interne du serveur' });
