@@ -1,53 +1,41 @@
 import Image from "next/image";
+import {Product} from "@/components/DashBoard/products/add-product";
+import TolesBardage from "@/public/images/bardage.png";
+import {useEffect} from "react";
 
-export interface ProductDetail{
-    id?: number;
-    name?: string;
-    details?: string;
-    color?: string[];
-    price?: number;
-    category?: string;
-    img: string;
-
+interface ProductDetailProps {
+    product: Product; // Assurez-vous que Product est correctement importé depuis votre application
 }
-export default function ProductDetail({name, details, color, price, category, img}: ProductDetail){
-
-    const getColorClass = (code: string) => {
-        switch (code) {
-            case 'RAL7016':
-                return 'bg-gray-700';
-            case 'RAL8012':
-                return 'bg-red-500';
-            // Ajoutez d'autres cas selon vos besoins
-            default:
-                return ''; // Classe par défaut ou vide si aucune correspondance
-        }
-    }
+export const ProductDetail: React.FC<ProductDetailProps> = ({ product }) => {
 
     return(
         <section className="text-gray-700 body-font overflow-hidden bg-white">
             <div className="container px-5 py-24 mx-auto">
                 <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                    <Image alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={img} width={"500"} height={"300"}/>
+                    <Image alt="ecommerce" className="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src={TolesBardage} width={"500"} height={"300"}/>
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{category}</h2>
-                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{name}</h1>
+                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{product.category}</h2>
+                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{product.product_name}</h1>
                             <div className="flex mb-4">
 
-
+                                {product.product_price}
                             </div>
-                            <p className="leading-relaxed">{details}</p>
+                            <p className="leading-relaxed">{product.product_desc}</p>
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Couleur</span>
 
-                                    {color && color.map(color => (
-                                        <>
-                                        <button className={`border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none`}></button>
-                                        <span className="border-2">{color}</span>
-                                        </>
-                                    )
-                                    )}
+                                    {product.colors && product.colors.map((color, index) => (
+                                        <div key={index}>
+                                            <span className="border-2">{color}{product.colorsHex?.length}+1</span>
+                                            {/*{product.colorsHex[index] && (
+                                                <button
+                                                    className={`border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none`}
+                                                    style={{ backgroundColor: product.colorsHex[index] }}
+                                                ></button>
+                                            )}*/}
+                                        </div>
+                                    ))}
                                 </div>
                                 {/*<div className="flex ml-6 items-center">
                                     <span className="mr-3">Size</span>
@@ -67,7 +55,7 @@ export default function ProductDetail({name, details, color, price, category, im
                                 </div>*/}
                             </div>
                             <div className="flex">
-                                <span className="title-font font-medium text-2xl text-gray-900">{price}/m²</span><span className="ml-2 text-base font-medium">Hors taxe</span>
+                                <span className="title-font font-medium text-2xl text-gray-900">{product.product_price}/m²</span><span className="ml-2 text-base font-medium">Hors taxe</span>
                                 {/*  <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Button</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-5 h-5" viewBox="0 0 24 24">
