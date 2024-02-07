@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 
 export interface Category {
-    id?: number;
+    cat_id?: number;
     cat_name: string;
     cat_desc: string;
     img_path: string;
@@ -17,7 +17,7 @@ export default function CategoryDash() {
         img_path: '',
     });
     const [editCategory, setEditCategory] = useState<Category>({
-        id: undefined,
+        cat_id: undefined,
         cat_name: '',
         cat_desc: '',
         img_path: '',
@@ -27,7 +27,7 @@ export default function CategoryDash() {
     // Fonction pour ouvrir le formulaire d'édition
     const handleEditCategory = (catId: number | undefined) => {
         // Recherche de la catégorie sélectionnée dans la liste
-        const selectedCategory = categories.find(category => category.id === catId);
+        const selectedCategory = categories.find(category => category.cat_id === catId);
         if (selectedCategory) {
             // Préremplir les champs du formulaire avec les informations de la catégorie sélectionnée
             setEditCategory(selectedCategory);
@@ -40,7 +40,7 @@ export default function CategoryDash() {
     const handleCancelEdit = () => {
         // Réinitialiser les champs du formulaire
         setEditCategory({
-            id: undefined,
+            cat_id: undefined,
             cat_name: '',
             cat_desc: '',
             img_path: '',
@@ -51,7 +51,7 @@ export default function CategoryDash() {
 
     const handleDeleteCategory = async (catId: number | undefined) => {
         try {
-            const response = await fetch(`/api/categories/remove-category`, { method: 'DELETE', body: JSON.stringify(catId) });
+            const response = await fetch(`/api/categories/`, { method: 'DELETE', body: JSON.stringify(catId) });
 
             if (response.ok) {
                 fetchCategories();
@@ -70,7 +70,7 @@ export default function CategoryDash() {
         }
 
         try {
-            const response = await fetch('/api/categories/add-category', {
+            const response = await fetch('/api/categories/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export default function CategoryDash() {
 
     const fetchCategories = async () => {
         try {
-            const response = await fetch('/api/categories/get-categories');
+            const response = await fetch('/api/categories/',{ method: 'GET' });
             if (response.ok) {
                 const data = await response.json();
                 setCategories(data);
@@ -112,12 +112,13 @@ export default function CategoryDash() {
     const handleModifyCategory = async () => {
         try {
             // Vérifier si toutes les données nécessaires sont fournies
-            if (!editCategory.id || !editCategory.cat_name || !editCategory.cat_desc) {
+            if (!editCategory.cat_id || !editCategory.cat_name || !editCategory.cat_desc) {
+                console.log(editCategory);
                 console.error('Veuillez fournir toutes les données nécessaires pour la modification de la catégorie');
                 return;
             }
             // Appeler l'API de modification de catégorie avec la méthode PUT
-            const response = await fetch(`/api/categories/update-category`, {
+            const response = await fetch(`/api/categories/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -151,19 +152,19 @@ export default function CategoryDash() {
                 <h2 className="text-2xl font-bold mb-4">Liste des Catégories</h2>
                 <ul className="grid grid-cols-2 gap-4">
                     {categories && categories.map(category => (
-                        <li key={category.id} className="bg-white p-4 shadow rounded-md">
+                        <li key={category.cat_id} className="bg-white p-4 shadow rounded-md">
                             <p className="font-bold">libelle : {category.cat_name}</p>
                             <p className="text-gray-500">description : {category.cat_desc}</p>
                             <p className="text-gray-500">src de l'image : {category.img_path} (EN DEVELOPPEMENT)</p>
                             <button
                                 className="mt-2 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md"
-                                onClick={() => handleDeleteCategory(category.id)}
+                                onClick={() => handleDeleteCategory(category.cat_id)}
                             >
                                 Supprimer
                             </button>
                             <button
                                 className="mt-2 ml-2 bg-blue-500 hover:bg-red-600 text-white px-3 py-1 rounded-md"
-                                onClick={() => handleEditCategory(category.id)}
+                                onClick={() => handleEditCategory(category.cat_id)}
                             >
                                 Modifier
                             </button>

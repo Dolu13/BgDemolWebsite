@@ -114,7 +114,7 @@ const AddProduct: React.FC<AddProductProps> = ({ categories, lengths, colors , f
                 <select required value={categoryId} onChange={e => setCategoryId(e.target.value)} className="mt-1 block w-full p-2 border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
                     <option value="">Select Category</option>
                     {categories.map(category => (
-                        <option key={category.id} value={category.id}>{category.cat_name}</option>
+                        <option key={category.cat_id} value={category.cat_id}>{category.cat_name}</option>
                     ))}
                 </select>
             </div>
